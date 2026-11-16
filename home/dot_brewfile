@@ -1,0 +1,22 @@
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Manage your dotfiles across multiple diverse machines, securely
+brew "chezmoi"
+# Console Matrix
+brew "cmatrix"
+# Fast and simple Node.js version manager
+brew "fnm"
+# Improved top (interactive process viewer)
+brew "htop"
+# Fast, disk space efficient package manager
+brew "pnpm"
+# Terminal multiplexer
+brew "tmux"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Fish-like fast/unobtrusive autosuggestions for zsh
+brew "zsh-autosuggestions"
+# Zsh port of Fish shell's history search
+brew "zsh-history-substring-search"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
