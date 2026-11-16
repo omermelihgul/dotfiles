@@ -1,0 +1,2 @@
+export PATH="$HOME/.local/bin:$PATH"
+export HOMEBREW_BUNDLE_FILE_GLOBAL="$HOME/.brewfile"
