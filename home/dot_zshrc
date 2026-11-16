@@ -1,0 +1,69 @@
+PROMPT='%F{202}$ %f'
+
+HISTSIZE=50000
+SAVEHIST=50000
+setopt SHARE_HISTORY          # share history across open terminals
+setopt HIST_IGNORE_ALL_DUPS   # keep one copy of a repeated command
+setopt HIST_IGNORE_SPACE      # commands starting with a space are not saved
+setopt EXTENDED_HISTORY       # record a timestamp with each command
+
+autoload -Uz compinit
+compinit
+
+# cycle through matches with Up/Down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+alias c='clear'
+alias h='history'
+alias j='jobs -l'
+
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+
+alias dot='chezmoi'
+alias wget='wget -c'
+alias mkdir='mkdir -p'
+alias ping='ping -c 5'
+alias header='curl -I'
+alias cat='bat -p --paging=never'
+
+alias ..='cd ..'
+alias ...='cd ../../../'
+
+alias la='ls -A'
+alias ll='ls -laho'
+alias lh='ls -ldo .*'   # hidden files only
+alias lt='ls -lahto'    # newest first
+alias lS='ls -lahSo'    # biggest first
+
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+case "$OSTYPE" in
+  darwin*)
+    alias ls='ls -G'
+    export PNPM_HOME="$HOME/Library/pnpm"
+    eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+    ;;
+  linux*)
+    alias ls='ls --color=auto'
+    export PNPM_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/pnpm"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+    ;;
+esac
+
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+eval "$(fnm env --use-on-cd --shell zsh)"
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
+
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh
