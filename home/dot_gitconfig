@@ -1,0 +1,13 @@
+[user]
+	name = Ömer Melih Gül
+	email = 56808655+omermelihgul@users.noreply.github.com
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+[alias]
+	br = branch
+	ci = commit
+	co = checkout
+	st = status
+	sw = switch
+	last = log -1 HEAD
