@@ -45,6 +45,10 @@ mkcd() {
 case "$OSTYPE" in
   darwin*)
     alias ls='ls -G'
+    repos() {
+        cd ~/Documents/repos/$1
+    }
+
     export PNPM_HOME="$HOME/Library/pnpm"
     eval "$(/opt/homebrew/bin/brew shellenv zsh)"
     ;;
